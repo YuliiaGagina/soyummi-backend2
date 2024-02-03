@@ -7,6 +7,7 @@ const { SECRET_KEY } = process.env;
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+
   const user = await User.findOne({ email });
   if (!user) {
     throw new Unauthorized("Email not found");
@@ -24,7 +25,8 @@ const login = async (req, res) => {
   res.json({
     data: {
       token,
-      user,
+      name: user.name,
+      email,
     },
   });
 };
