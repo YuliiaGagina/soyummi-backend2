@@ -70,6 +70,7 @@ const addSchema = Joi.object({
   ingredients: Joi.string().required(),
   recipe_preparation: Joi.string().required(),
   favorite: Joi.bool(),
+  photo: Joi.any(),
 });
 const updateFavoriteSchema = Joi.object({
   favorite: Joi.bool().required(),
