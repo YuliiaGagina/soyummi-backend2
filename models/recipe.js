@@ -40,7 +40,7 @@ const recipeSchema = new Schema(
       required: true,
     },
     ingredients: {
-      type: String,
+      type: Array,
       required: true,
     },
     recipe_preparation: {
@@ -67,7 +67,7 @@ const addSchema = Joi.object({
     .valueOf(...categoryList)
     .required(),
   cooking_time: Joi.string().required(),
-  ingredients: Joi.string().required(),
+  ingredients: Joi.array().required(),
   recipe_preparation: Joi.string().required(),
   favorite: Joi.bool(),
 });
