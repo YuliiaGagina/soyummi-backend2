@@ -8,6 +8,9 @@ const productsDir = path.join(__dirname, "../../", "public", "products");
 
 const add = async (req, res) => {
   const { path: tempUpload, originalname } = req.file;
+  if (!tempUpload) {
+    return res.status(400).json({ error: "File upload failed" });
+  }
   try {
     const resultUpload = path.join(productsDir, originalname);
 
