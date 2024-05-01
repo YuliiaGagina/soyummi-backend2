@@ -9,12 +9,14 @@ const {
 const { recipes: ctrl } = require("../../controllers");
 const { ctrlWrapper } = require("../../helpers");
 
-
 const router = express.Router();
+router.get(
+  "/myrecipes/",
+  reloadUser,
 
+  ctrlWrapper(ctrl.getAllForRecentUser)
+);
 router.get("/", ctrlWrapper(ctrl.getAll));
-
-router.get("/myrecipes/", reloadUser, ctrlWrapper(ctrl.getAllForRecentUser));
 
 router.get("/:id", isValidId, ctrlWrapper(ctrl.getById));
 
