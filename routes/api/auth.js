@@ -16,6 +16,11 @@ router.post(
   ctrlWrapper(ctrl.register)
 );
 router.post("/login", validateBody(joiLoginSchema), ctrlWrapper(ctrl.login));
-module.exports = router;
 
 router.get("/logout", reloadUser, ctrlWrapper(ctrl.logout));
+
+router.get("/activate/:link", ctrlWrapper(ctrl.activates));
+router.get("/refresh", ctrlWrapper(ctrl.refresh));
+router.get("/users", ctrlWrapper(ctrl.getUsers));
+
+module.exports = router;

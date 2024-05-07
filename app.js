@@ -1,6 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -27,6 +28,7 @@ const recipesRouter = require("./routes/api/recipes");
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("public"));
 
 app.use("/api/auth", authRouter);

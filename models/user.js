@@ -18,10 +18,14 @@ const userSchema = new Schema(
       required: true,
       minlength: 6,
     },
-    token: {
+    isActivated: {
       type: String,
-      default: null,
+      default: false,
     },
+    activationLink: {
+      type: String,
+    },
+
     avatarURL: {
       type: String,
       required: true,
@@ -29,6 +33,11 @@ const userSchema = new Schema(
   },
   { versionKey: false, timestamps: true }
 );
+
+// token: {
+//   type: String,
+//   default: null,
+// },
 
 const joiRegisterSchema = Joi.object({
   name: Joi.string().required(),
